@@ -49,10 +49,7 @@ jobs:
     - name: Fetch firmware
       if: env.need_update == 1
       run: |
-       if [[ "${{ matrix.model }}" == "SM-G980F" ]]; then
-           imei=${{ vars.IMEI }}
-       fi
-       samfirm -m ${{ matrix.model }} -r ${{ matrix.region }} -i $imei
+       samfirm -m ${{ matrix.model }} -r ${{ matrix.region }} -i ${{ vars.IMEI }}
 
     - name: Get path of files
       if: env.need_update == 1
